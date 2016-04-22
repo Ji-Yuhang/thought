@@ -1,0 +1,11 @@
+%h1 Thought of Ji-Yuhang
+%p this is the home page for Ji-Yuhang
+- if user_signed_in?
+  %div
+    = current_user.email
+    = link_to '用户信息', edit_user_registration_path
+    = link_to '退出登录', destroy_user_session_path, :method => :delete
+- else
+  %div
+    = link_to '注册', new_user_registration_path
+    = link_to '登录', new_user_session_path

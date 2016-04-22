@@ -5,8 +5,8 @@ source 'https://gems.ruby-china.org'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem 'mongoid'
-gem 'mongoid-rails'
+gem 'mongoid', '~> 5.1.0'
+# gem 'mongoid-rails', '~> 5.0'
 gem 'bson'
 gem 'tzinfo'
 # Use SCSS for stylesheets
