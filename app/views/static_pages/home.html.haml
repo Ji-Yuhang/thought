@@ -1,5 +1,7 @@
-%h1 Thought of Ji-Yuhang
-%p this is the home page for Ji-Yuhang
+.center.jumbotron
+  %h1 Thought of Ji-Yuhang
+  %p this is the home page for Ji-Yuhang
+  =link_to '注册', new_user_registration_path, :class=>"btn btn-lg btn-primary"
 - if user_signed_in?
   %div
     = current_user.email
