@@ -5,6 +5,7 @@
 - if user_signed_in?
   %div
     = current_user.email
+    = image_tag current_user.avatar.url(:thumb)
     = link_to '用户信息', edit_user_registration_path
     = link_to '退出登录', destroy_user_session_path, :method => :delete
 - else

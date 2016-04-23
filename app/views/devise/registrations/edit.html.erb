@@ -1,11 +1,13 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= current_user.email %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,multipart: true  }) do |f| %>
+  <h2>
+    <%= devise_error_messages! %>
+  </h2>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :nick_name %><br />
+    <%= f.text_field :nick_name, autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,14 +28,13 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <%= f.file_field :avatar %>
+  <div class="btn btn-default btn-xlg">
+    <%= f.submit "更新"  %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>不开心? <%= button_to "不玩了,删账号", registration_path(resource_name), data: { confirm: "你确定要永久删除帐号,删除之后资料永久丢失?" }, method: :delete , class:"btn btn-default btn-xlg"%></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "返回", :back %>
