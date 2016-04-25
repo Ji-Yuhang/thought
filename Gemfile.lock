@@ -642,3 +642,6 @@ DEPENDENCIES
   whenever
   wisper
   workflow (~> 1.2)
+
+BUNDLED WITH
+   1.11.2

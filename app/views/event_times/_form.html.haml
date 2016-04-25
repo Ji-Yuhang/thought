@@ -10,6 +10,9 @@
     = f.label :content
     = f.text_field :content
   .field
+    = f.label :event_type
+    = select_tag :event_type, options_for_select( EventType.all.map{|l| [l.type_name, l.id] } )
+  .field
     = f.label :begin_time
     = f.time_select :begin_time
   .field
