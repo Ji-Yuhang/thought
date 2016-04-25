@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :microposts
+  resources :event_times
+  resources :event_tags
+  resources :event_types
+  resources :event_tags
+  resources :event_types
+  resources :event_times
+  resources :microposts
   get 'static_pages/contact'
 
   devise_for :users, controllers: {

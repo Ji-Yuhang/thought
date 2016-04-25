@@ -1,0 +1,21 @@
+%h1 Listing event_tags
+
+%table
+  %thead
+    %tr
+      %th Tag name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @event_tags.each do |event_tag|
+      %tr
+        %td= event_tag.tag_name
+        %td= link_to 'Show', event_tag
+        %td= link_to 'Edit', edit_event_tag_path(event_tag)
+        %td= link_to 'Destroy', event_tag, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Event tag', new_event_tag_path

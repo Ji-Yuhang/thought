@@ -1,0 +1,29 @@
+%h1 Listing event_times
+
+%table
+  %thead
+    %tr
+      %th Content
+      %th Begin time
+      %th End time
+      %th Time length
+      %th Time
+      %th
+      %th
+      %th
+
+  %tbody
+    - @event_times.each do |event_time|
+      %tr
+        %td= event_time.content
+        %td= event_time.begin_time
+        %td= event_time.end_time
+        %td= event_time.time_length
+        %td= event_time.time
+        %td= link_to 'Show', event_time
+        %td= link_to 'Edit', edit_event_time_path(event_time)
+        %td= link_to 'Destroy', event_time, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Event time', new_event_time_path

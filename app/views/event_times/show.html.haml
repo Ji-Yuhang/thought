@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @event_time.content
+%p
+  %b Begin time:
+  = @event_time.begin_time
+%p
+  %b End time:
+  = @event_time.end_time
+%p
+  %b Time length:
+  = @event_time.time_length
+%p
+  %b Time:
+  = @event_time.time
+
+= link_to 'Edit', edit_event_time_path(@event_time)
+\|
+= link_to 'Back', event_times_path

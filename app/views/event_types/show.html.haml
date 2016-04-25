@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Type name:
+  = @event_type.type_name
+
+= link_to 'Edit', edit_event_type_path(@event_type)
+\|
+= link_to 'Back', event_types_path

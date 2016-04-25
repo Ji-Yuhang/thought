@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Tag name:
+  = @event_tag.tag_name
+
+= link_to 'Edit', edit_event_tag_path(@event_tag)
+\|
+= link_to 'Back', event_tags_path

@@ -11,6 +11,8 @@ development:
       hosts:
         - 101.200.174.36:27017
       options:
+      use_utc: false
+      use_activesupport_time_zone: true
         # Change the default write concern. (default = { w: 1 })
         # write:
         #   w: 1
@@ -121,10 +123,10 @@ development:
     # scope_overwrite_exception: false
 
     # Use Active Support's time zone in conversions. (default: true)
-    # use_activesupport_time_zone: true
+    use_activesupport_time_zone: true
 
     # Ensure all times are UTC in the app side. (default: false)
-    # use_utc: false
+    use_utc: false
 
     # Set the Mongoid and Ruby driver log levels when not in a Rails
     # environment. The Mongoid logger will be set to the Rails logger
