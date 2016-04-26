@@ -13,16 +13,11 @@
     = f.label :event_type
     = select_tag :event_type, options_for_select( EventType.all.map{|l| [l.type_name, l.id] } )
   .field
-    = f.label :begin_time
+    = f.label :begin_time, class:"datetime"
     = f.time_select :begin_time
   .field
     = f.label :end_time
     = f.time_select :end_time
-  .field
-    = f.label :time_length
-    = f.number_field :time_length
-  .field
-    = f.label :time
-    = f.time_select :time
+
   .actions
     = f.submit 'Save'

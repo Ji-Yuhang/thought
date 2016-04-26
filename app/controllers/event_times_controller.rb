@@ -40,6 +40,11 @@ class EventTimesController < ApplicationController
   # PATCH/PUT /event_times/1
   # PATCH/PUT /event_times/1.json
   def update
+    params
+    event_time_params
+    length = event_time_params[:end_time] - event_time_params[:begin_time]
+
+    debugger
     respond_to do |format|
       if @event_time.update(event_time_params)
         format.html { redirect_to @event_time, notice: 'Event time was successfully updated.' }
