@@ -279,6 +279,9 @@ GEM
       mongoid (~> 5.0)
       rake
       rspec (~> 3.3)
+    mongoid-sphinx (0.1.4)
+      mongoid (>= 2.0.0.beta.19)
+      riddle (>= 1.1.0)
     mongoid-tree (2.0.1)
       mongoid (>= 4.0, < 6.0)
     mongoid_alize (0.5.0)
@@ -418,6 +421,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    riddle (1.5.12)
     rolify (5.1.0)
     rsolr (1.1.1)
       builder (>= 2.1.2)
@@ -594,6 +598,7 @@ DEPENDENCIES
   mongoid-geospatial
   mongoid-paperclip
   mongoid-rspec
+  mongoid-sphinx (~> 0.1.4)
   mongoid-tree
   mongoid_alize
   mongoid_taggable
@@ -619,6 +624,7 @@ DEPENDENCIES
   resque-scheduler-web
   resque-web
   rest-client
+  riddle
   rolify
   rspec-rails
   rucaptcha (~> 0.2.5)

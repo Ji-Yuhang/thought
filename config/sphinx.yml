@@ -1,0 +1,14 @@
+development:
+  morphology: stem_en
+  address: localhost
+  port: 3312
+
+staging:
+  morphology: stem_en
+  address: localhost
+  port: 3312
+
+production:
+  morphology: stem_en
+  address: localhost
+  port: 3312

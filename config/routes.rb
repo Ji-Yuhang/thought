@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  #get 'shanbay_words/index'
+  get 'shanbay_words/show'
+  get 'shanbay' => 'shanbay_words#show'
+  post 'shanbay' => 'shanbay_words#show'
+
   resources :microposts
   resources :event_times
   resources :event_tags

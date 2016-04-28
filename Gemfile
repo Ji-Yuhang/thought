@@ -16,6 +16,9 @@ gem 'mongoid_taggable_on'
 
 gem 'mongoid-geospatial'
 gem 'mongoid_alize'
+gem 'riddle'
+gem 'mongoid-sphinx', '~> 0.1.4'
+
 
 gem 'better_errors'
 gem 'binding_of_caller'

@@ -1,0 +1,23 @@
+= form_for :shanbay_words, url:shanbay_path,class:"form-horizontal" do |f|
+  .row
+    .col-xs-2
+      .field
+        = f.text_field :word, class:"form-control", placeholder:"search"
+
+    .col-xs-1
+      .actions
+        = f.submit '查找', class:"btn btn-primary btn-default"
+
+- unless @shanbay.nil?
+  %p= @shanbay.content
+  %p= @shanbay.pronunciation
+  %p= @shanbay.definition
+  %p= @shanbay.en_definitions
+  = link_to "uk", @shanbay.uk_audio
+  = link_to "us", @shanbay.us_audio
+  %p= @shanbay.cn_definition
+  %p= @shanbay.num_sense
+  %p= @shanbay.content_type
+  -#%p= @shanbay.pron
+  -#%p= @shanbay.audio
+  -#%p= @shanbay.word_id
