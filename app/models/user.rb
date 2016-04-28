@@ -40,6 +40,10 @@ class User
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   field :nick_name, type: String, default: "佚名"
+  has_many :microposts
+  has_many :event_times
+  has_many :event_tags
+  has_many :event_types
 
   # field :
 end

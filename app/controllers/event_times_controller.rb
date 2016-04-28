@@ -1,10 +1,10 @@
 class EventTimesController < ApplicationController
   before_action :set_event_time, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
   # GET /event_times
   # GET /event_times.json
   def index
-    @event_times = EventTime.all
+    @event_times = @user.event_times.all
   end
 
   # GET /event_times/1
@@ -25,6 +25,7 @@ class EventTimesController < ApplicationController
   # POST /event_times.json
   def create
     @event_time = EventTime.new(event_time_params)
+    @event_time.user = @user
 
     respond_to do |format|
       if @event_time.save

@@ -1,10 +1,10 @@
 class EventTagsController < ApplicationController
   before_action :set_event_tag, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
   # GET /event_tags
   # GET /event_tags.json
   def index
-    @event_tags = EventTag.all
+    @event_tags = @user.event_tags.all
   end
 
   # GET /event_tags/1
@@ -25,6 +25,7 @@ class EventTagsController < ApplicationController
   # POST /event_tags.json
   def create
     @event_tag = EventTag.new(event_tag_params)
+    @event_tag.user = @user
 
     respond_to do |format|
       if @event_tag.save

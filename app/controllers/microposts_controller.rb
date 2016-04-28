@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.all
+    @microposts = @user.microposts.all
   end
 
   # GET /microposts/1
@@ -31,6 +31,7 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       if @micropost.save
+        @user.micropost
         format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
         format.json { render :show, status: :created, location: @micropost }
       else
@@ -68,9 +69,6 @@ class MicropostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_micropost
       @micropost = Micropost.find(params[:id])
-    end
-    def set_user
-      @user ||= current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,10 +1,10 @@
 class EventTypesController < ApplicationController
   before_action :set_event_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
   # GET /event_types
   # GET /event_types.json
   def index
-    @event_types = EventType.all
+    @event_types = @user.event_types.all
   end
 
   # GET /event_types/1
@@ -25,7 +25,7 @@ class EventTypesController < ApplicationController
   # POST /event_types.json
   def create
     @event_type = EventType.new(event_type_params)
-
+    @event_type.user = @user
     respond_to do |format|
       if @event_type.save
         format.html { redirect_to @event_type, notice: 'Event type was successfully created.' }
