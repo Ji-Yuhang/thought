@@ -77,4 +77,7 @@ class EventTimesController < ApplicationController
     def event_time_params
       params.require(:event_time).permit(:content, :begin_time, :end_time, :time_length, :time)
     end
+  def set_user
+    @user ||= current_user
+  end
 end

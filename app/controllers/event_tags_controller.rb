@@ -72,4 +72,7 @@ class EventTagsController < ApplicationController
     def event_tag_params
       params.require(:event_tag).permit(:tag_name)
     end
+  def set_user
+    @user ||= current_user
+  end
 end

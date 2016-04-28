@@ -71,4 +71,7 @@ class EventTypesController < ApplicationController
     def event_type_params
       params.require(:event_type).permit(:type_name)
     end
+  def set_user
+    @user ||= current_user
+  end
 end

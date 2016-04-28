@@ -75,4 +75,7 @@ class MicropostsController < ApplicationController
     def micropost_params
       params.require(:micropost).permit(:content)
     end
+  def set_user
+    @user ||= current_user
+  end
 end
