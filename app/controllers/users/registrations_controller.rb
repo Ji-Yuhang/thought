@@ -14,18 +14,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    debugger
     super
-    binding.pry
-
   end
 
   # PUT /resource
   def update
     debugger
     super
-    binding.pry
-
   end
 
   # DELETE /resource
@@ -50,9 +45,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.for(:account_update) << :attribute
-  # end
+  def configure_account_update_params
+    debugger
+    devise_parameter_sanitizer.for(:account_update) << :nick_name
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -63,4 +59,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def resource_params
+    debugger
+    # params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+  end
+  private :resource_params
 end

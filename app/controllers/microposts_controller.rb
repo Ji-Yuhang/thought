@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = @user.microposts.all
+    @microposts = @user.microposts.all.order_by(:created_at => 'desc')
   end
 
   # GET /microposts/1
@@ -26,14 +26,19 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
-    @micropost = Micropost.new(micropost_params)
+    if params.include?("/microposts/new") and microposts_new_params[:content].nil? and microposts_new_params[:content].empty?
+      @micropost = Micropost.new(microposts_new_params)
+    else
+      @micropost = Micropost.new(micropost_params)
+    end
+
     @micropost.user = @user
 
     respond_to do |format|
       if @micropost.save
-        @user.micropost
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-        format.json { render :show, status: :created, location: @micropost }
+        @microposts = @user.microposts.all.order_by(:created_at => 'desc')
+        format.html { redirect_to action: 'index', notice: 'Micropost was successfully created.' }
+        format.json { render :index, status: :created, location: @microposts }
       else
         format.html { render :new }
         format.json { render json: @micropost.errors, status: :unprocessable_entity }
@@ -74,6 +79,13 @@ class MicropostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def micropost_params
       params.require(:micropost).permit(:content)
+    end
+    def microposts_new_params
+      params.require("/microposts/new").permit(:content)
+    end
+    def have_microposts_new?
+      params.include? :micropost
+
     end
   def set_user
     @user ||= current_user

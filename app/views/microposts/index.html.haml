@@ -1,23 +1,44 @@
-%h1 Listing microposts
-
-%table.table.table-hover
-  %thead
-    %tr
-      %th 内容
-      %th 时间
-      %th
-      %th
-      %th
-
-  %tbody
-    - @microposts.each do |micropost|
-      %tr
-        %td= micropost.content
-        %td= micropost.time
-        %td= link_to 'Show', micropost
-        %td= link_to 'Edit', edit_micropost_path(micropost)
-        %td= link_to 'Destroy', micropost, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+-#%table.table.table-hover
+-#  %thead
+-#    %tr
+-#      %th 内容
+-#      %th 时间
+-#      %th
+-#      %th
+-#      %th
+-#
+-#  %tbody
+-#    - @microposts.each do |micropost|
+-#      %tr
+-#        %td= micropost.content
+-#        %td= micropost.time
+-#        %td= link_to 'Show', micropost
+-#        %td= link_to 'Edit', edit_micropost_path(micropost)
+-#        %td= link_to 'Destroy', micropost, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= stylesheet_link_tag("twitter_core.bundle.css")
+= stylesheet_link_tag("twitter_more_1.bundle.css")
+= stylesheet_link_tag("twitter_more_2.bundle.css")
+= stylesheet_link_tag("twitter_profile_editing.bundle.css")
 
 = link_to 'New Micropost', new_micropost_path
+= form_for :micropost,class:"form-horizontal" do |f|
+  .field
+    -#= f.label :content
+    = f.text_area :content, rows:"3"
+
+  .actions
+    = f.submit 'Save', class:"btn btn-primary btn-large"
+
+%br
+.stream
+  %ol.stream-items.js-navigable-stream
+  - @microposts.each do |micropost|
+    %li.js-stream-item.stream-item.stream-item.expanding-stream-item{:id => "#{micropost.id}"}
+      .content
+        .stream-item-header
+        .js-tweet-text-container
+          %p.TweetTextSize.js-tweet-text.tweet-text= micropost.content
+        .card2.js-media-container
+        .stream-item-footer
+
+

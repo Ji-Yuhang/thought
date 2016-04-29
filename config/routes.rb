@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
 
   devise_for :users, controllers: {
-      sessions: 'users/sessions'
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
+
   }
 
   get 'static_pages/home'
