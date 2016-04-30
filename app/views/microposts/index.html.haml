@@ -20,14 +20,14 @@
 = stylesheet_link_tag("twitter_more_2.bundle.css")
 = stylesheet_link_tag("twitter_profile_editing.bundle.css")
 
-= link_to 'New Micropost', new_micropost_path
+=# link_to '新建微博', new_micropost_path
 = form_for :micropost,class:"form-horizontal" do |f|
   .field
     -#= f.label :content
     = f.text_area :content, rows:"3"
 
   .actions
-    = f.submit 'Save', class:"btn btn-primary btn-large"
+    = f.submit '发送', class:"btn btn-primary btn-large"
 
 %br
 .stream

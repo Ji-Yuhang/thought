@@ -10,6 +10,12 @@ class ShanbayWordsController < ApplicationController
     else
       param_word = params[:word]
     end
+    ap param_word
+    unless param_word.nil?
+      param_word.gsub! /^\s*/, '' 
+      param_word.gsub! /\s*$/, ''
+    end
+    ap param_word
     words = Word.where :word => param_word
     # words = Word.search(param_word)
     unless words.nil? or words.count <= 0

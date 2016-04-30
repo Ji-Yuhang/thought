@@ -9,16 +9,17 @@
         = f.submit '查找', class:"btn btn-primary btn-default"
 
 - unless @shanbay.nil?
-  %p= @shanbay.content
-  %p= raw @shanbay.pronunciation
-  = link_to "uk", @shanbay.uk_audio
-  = link_to "us", @shanbay.us_audio
+  .row
+    .word= @shanbay.content
+    .pron= raw ("["+@shanbay.pronunciation+"]")
+    = link_to "uk", @shanbay.uk_audio
+    = link_to "us", @shanbay.us_audio
   %p= @shanbay.definition
-  %p= @shanbay.en_definitions
-
+  %p= @shanbay.en_definition
   %p= @shanbay.cn_definition
-  %p= @shanbay.num_sense
-  %p= @shanbay.content_type
+  
+  -#%p= @shanbay.num_sense
+  -#%p= @shanbay.content_type
   -#%p= @shanbay.pron
   -#%p= @shanbay.audio
   -#%p= @shanbay.word_id

@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  rolify
   include Mongoid::Paperclip
 
   # Include default devise modules. Others available are:
