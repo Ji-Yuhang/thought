@@ -5,4 +5,7 @@ class Micropost
  
   field :content, type: String
   field :time, type: Time, default: ->{ Time.now }
+  validates :content, presence: true
+  
+  paginates_per 10
 end

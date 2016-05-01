@@ -5,7 +5,8 @@ class MicropostsController < ApplicationController
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = @user.microposts.all.order_by(:created_at => 'desc')
+    @microposts = @user.microposts.page(params[:page]).order_by(:created_at => 'desc')
+        # @articles = @user.articles.page params[:page]
   end
 
   # GET /microposts/1
