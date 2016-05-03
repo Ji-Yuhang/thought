@@ -16,7 +16,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @micropost = Micropost.new
+    @micropost = @user.microposts.build
     
   end
 
@@ -28,12 +28,14 @@ class MicropostsController < ApplicationController
   # POST /microposts.json
   def create
     if params.include?("/microposts/new") and microposts_new_params[:content].nil? and microposts_new_params[:content].empty?
-      @micropost = Micropost.new(microposts_new_params)
+      @micropost = @user.microposts.build microposts_new_params
+      #@micropost = Micropost.new(microposts_new_params)
     else
-      @micropost = Micropost.new(micropost_params)
+      @micropost = @user.microposts.build micropost_params
+      #@micropost = Micropost.new(micropost_params)
     end
 
-    @micropost.user = @user
+    #@micropost.user = @user
 
     respond_to do |format|
       if @micropost.save

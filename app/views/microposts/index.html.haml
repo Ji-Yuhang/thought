@@ -40,7 +40,13 @@
       .content
         .stream-item-header
         .js-tweet-text-container
-          %p.TweetTextSize.js-tweet-text.tweet-text= micropost.content
+          .row
+            .col-xs-11.col-sm-10.col-md-9
+              %p.TweetTextSize.js-tweet-text.tweet-text= micropost.content
+            .col-xs-1.col-sm-2.col-md-3
+              = micropost.user.nick_name
+              = micropost.user.email
+          
         .card2.js-media-container
         .stream-item-footer
 
