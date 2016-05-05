@@ -155,6 +155,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'mongoid-rspec'
   gem 'grape-entity-matchers'
+  gem 'launchy'
 
 end
 group :development do

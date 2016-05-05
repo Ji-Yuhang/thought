@@ -11,6 +11,27 @@
 </head>
 <body>
 
+<script type="text/javascript">
+  function selectText(){
+    if(document.selection){
+      return document.selection.createRange().text;// IE
+    }else{
+      return  window.getSelection().toString(); //标准
+    }
+  }
+
+  document.ondblclick=function (e) {
+    var str = selectText();
+//    alert(str);
+
+    var l = event.clientX;
+    var t = event.clientY;
+    if(str.length > 0){
+//      $this.next("div").html(str).css({"top":t+10,"left":l+10}).delay(value.delays).fadeIn();
+    }
+    window.location = "/shanbay/?word="+str;
+  }
+</script>
 <%= render 'layouts/header' %>
 <div class="container center-block">
   <!--<a class="twitter-timeline"  href="https://twitter.com/Ji_Yuhang" data-widget-id="727007335231549444">@Ji_Yuhang的推文</a>-->
