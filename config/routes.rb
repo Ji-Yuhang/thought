@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :todos, only: [:new,:show,:edit, :create, :index] do
+    resource :completion, only: [:create, :destroy]
+  end
   #get 'shanbay_words/index'
   get 'shanbay_words/show'
   get 'shanbay' => 'shanbay_words#show'

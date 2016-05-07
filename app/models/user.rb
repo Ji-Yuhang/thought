@@ -45,6 +45,7 @@ class User
   has_many :event_times
   has_many :event_tags
   has_many :event_types
+  has_many :todos
 
   # field :
 end

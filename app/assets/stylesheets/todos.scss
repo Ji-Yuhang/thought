@@ -1,0 +1,11 @@
+// Place all the styles related to the Todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.completed {
+  color: #FF0000;
+}
+.incompleted {
+  color: #00FF00;
+  text-decoration: line-through;
+}

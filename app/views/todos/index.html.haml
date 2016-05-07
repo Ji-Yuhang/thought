@@ -1,0 +1,22 @@
+%h2 Todo List
+
+%br
+
+%ul.todos
+  - @todos.each do |todo|
+    -#%li{:class => (todo.completed? ?"completed":"incompleted")}
+    %li
+      .row
+        .col-xs-11.col-sm-10.col-md-9{:class => [("completed" if todo.completed?),("incompleted" unless todo.completed?)]}
+
+          = todo.title
+        .col-xs-1.col-sm-2.col-md-3
+          - if todo.completed?
+            = button_to "Mark incomplete", todo_completion_path(todo), method: :delete
+          - else
+            = button_to "Mark complete", todo_completion_path(todo)
+
+
+
+= paginate @todos
+= link_to 'New Todo', new_todo_path
