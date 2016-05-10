@@ -4,7 +4,7 @@ task :copy_collins => :environment do
   puts "begin copy collins"
   total = 73792
   index = 0
-  db = SQLite3::Database.new "/Users/jiyuhang/vimrc/collins.db"
+  db = SQLite3::Database.new "#{ENV['HOME']}/vimrc/collins.db"
   db.execute( "select * from zhmultiwords" ) do |row|
     # ap row
     word_id = row[0]
@@ -21,14 +21,16 @@ task :copy_collins => :environment do
     example = row[11]
     collin = Collin.new
     ww = Word.where(word: word)
+    oneWord = ww.first
     if ww.count == 0
       w = Word.new 
       w.word = word
       collin.word = w
+      oneWord = w
     else
-      collin.word = ww
-      
+      collin.word = oneWord
     end
+    collin.content= word
     collin.frequency = frequency
     collin.collinstype = collinstype
     collin.num = num
@@ -47,7 +49,7 @@ task :copy_collins => :environment do
     end
     collin.example = exampleHash
 
-    ww.collins << collin
+    oneWord.collins << collin
     index += 1
     ap "#{index}    /    #{total}     #{w}"
     # debugger
