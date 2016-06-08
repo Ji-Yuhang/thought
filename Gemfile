@@ -105,8 +105,6 @@ gem 'resque-scheduler-web'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'capistrano-rails', group: :development
-
 gem 'quiet_assets'
 
 gem 'faker'
@@ -165,6 +163,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'meta_request'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano3-nginx', '~> 2.0'
 end
 
 group :production do
