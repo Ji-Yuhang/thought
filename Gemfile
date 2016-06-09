@@ -166,6 +166,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano3-nginx', '~> 2.0'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
 
 group :production do
