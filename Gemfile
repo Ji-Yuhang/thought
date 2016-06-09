@@ -1,5 +1,5 @@
-source 'https://gems.ruby-china.org'
-
+#source 'https://gems.ruby-china.org'
+source 'https://rubygems.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rb-readline'
@@ -168,6 +168,7 @@ group :development do
   gem 'capistrano3-nginx', '~> 2.0'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
+  gem 'capistrano-secrets-yml'
 end
 
 group :production do
