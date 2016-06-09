@@ -152,7 +152,6 @@ production:
       options:
       use_utc: false
       use_activesupport_time_zone: true
-          options:
+  options:
     use_activesupport_time_zone: true
-
     use_utc: false
