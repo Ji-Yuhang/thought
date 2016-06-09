@@ -121,7 +121,7 @@ gem 'gon'
 gem 'alipay', :git => "git://github.com/stockcode/alipay.git" #:path => "../alipay" #支付宝
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
