@@ -582,11 +582,8 @@ DEPENDENCIES
   bson
   bson_ext
   byebug
-<<<<<<< HEAD
   capistrano (~> 3.4)
-=======
   capistrano-bundler
->>>>>>> 2cf959f1af4dfb4939ec1c0c361f7d254aa61872
   capistrano-rails
   capistrano-rbenv
   capistrano-secrets-yml
