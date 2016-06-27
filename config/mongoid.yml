@@ -143,3 +143,15 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
+production:
+  clients:
+    default:
+      database: thought_development
+      hosts:
+        - 127.0.0.1:27017
+      options:
+      use_utc: false
+      use_activesupport_time_zone: true
+  options:
+    use_activesupport_time_zone: true
+    use_utc: false

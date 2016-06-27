@@ -2,23 +2,23 @@
 lock '3.4.1'
 
 set :application, 'thought'
-set :repo_url, 'git@github.com:Ji-Yuhang/thought.git'
-# set :user, "deploy"
-
+#set :repo_url, 'git@github.com:Ji-Yuhang/thought.git'
+set :repo_url, 'https://github.com/Ji-Yuhang/thought.git'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, 'develop'
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/var/www/thought'
 
 # Default value for :scm is :git
 # set :scm, :git
 
 # Default value for :format is :pretty
-# set :format, :pretty
+set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :debug
 
 # Default value for :pty is false
 # set :pty, true
@@ -27,14 +27,21 @@ set :repo_url, 'git@github.com:Ji-Yuhang/thought.git'
 # set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system','shared/pids', 'shared/sockets')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
+#set :default_env, { path: "~/.rbenv/plugins/ruby-build/bin:~/.rbenv/shims:~/.rbenv/bin:$PATH" }
+
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
+set :rbenv_type, :user
+set :rbenv_ruby, '2.3.0'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+set :unicorn_pid, "/var/www/thought/current/shared/pids/unicorn.pid"
 namespace :deploy do
 
   after :restart, :clear_cache do
@@ -43,7 +50,14 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+
     end
   end
 
+end
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
 end
