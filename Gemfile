@@ -1,4 +1,5 @@
-source 'https://gems.ruby-china.org'
+# source 'https://gems.ruby-china.org'
+source 'https://rubygems.org/'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -159,6 +160,7 @@ group :test do
 
 end
 group :development do
+  gem "capistrano", "~> 3.4"
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -171,4 +173,3 @@ group :production do
   #gem 'pg'
   gem 'rails_12factor'
 end
-

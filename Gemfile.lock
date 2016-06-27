@@ -11,7 +11,7 @@ GIT
     china_sms (0.0.8)
 
 GEM
-  remote: https://gems.ruby-china.org/
+  remote: https://rubygems.org/
   specs:
     aasm (4.10.0)
     actionmailer (4.2.5)
@@ -567,6 +567,7 @@ DEPENDENCIES
   bson
   bson_ext
   byebug
+  capistrano (~> 3.4)
   capistrano-rails
   capybara
   china_sms!
