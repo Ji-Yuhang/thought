@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
 html.turbolinks-progress-bar::before {
   background-color: red !important;
   height: 2px !important;
