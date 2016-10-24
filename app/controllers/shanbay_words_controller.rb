@@ -22,8 +22,32 @@ class ShanbayWordsController < ApplicationController
     # words = Word.search(param_word)
     unless words.nil? or words.count <= 0
       @shanbay = words.first.shanbay
+      @collins = words.first.collins
+
     else
-      @shanbay = nil
+      if $spell.check? param_word
+        stems = $spell.stem param_word
+        stems.delete param_word
+        param_word = stems.first
+
+        words = Word.where :word => param_word
+        if words.present?
+          @shanbay = words.first.shanbay
+          @collins = words.first.collins
+        else
+          @shanbay = nil
+          @suggests = $spell.suggest param_word
+        end
+
+
+      else
+        @shanbay = nil
+        @suggests = $sp.suggest param_word
+      end
+    end
+    if @shanbay.present?
+      @word = @shanbay.word
+      @thesaurus = $thesaurus[param_word]
     end
 
 
@@ -44,14 +68,42 @@ class ShanbayWordsController < ApplicationController
       param_word.strip!
       param_word.downcase!
     end
+    
     ap param_word
+
+    
     words = Word.where :word => param_word
     # words = Word.search(param_word)
-    unless words.nil? or words.count <= 0
+    unless words.blank?
       @shanbay = words.first.shanbay
+      @collins = words.first.collins
     else
-      @shanbay = nil
+      if $spell.check? param_word
+        stems = $spell.stem param_word
+        stems.delete param_word
+        param_word = stems.first
+
+        words = Word.where :word => param_word
+        if words.present?
+          @shanbay = words.first.shanbay
+          @collins = words.first.collins
+        else
+          @shanbay = nil
+          @suggests = $spell.suggest param_word
+        end
+ 
+        
+      else
+        @shanbay = nil
+        @suggests = $sp.suggest param_word
+      end
     end
+
+    if @shanbay.present?
+      @word = @shanbay.word
+      @thesaurus = $thesaurus[param_word]
+    end
+    
     render 'show'
   end
 end

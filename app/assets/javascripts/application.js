@@ -16,4 +16,8 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap
+//= require ace/ace
+//= require ace/theme-twilight
+//= require ace/mode-ruby
+//= require jquery-ace.min
 Turbolinks.enableProgressBar();

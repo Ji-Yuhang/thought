@@ -164,6 +164,10 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
+    ffi-hunspell (0.3.1)
+      ffi (~> 1.0)
+    font-awesome-rails (4.6.3.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     git-version-bump (0.15.1)
     globalid (0.3.6)
@@ -228,11 +232,13 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    hunspell (0.1.4)
     i18n (0.7.0)
     ice_nine (0.11.2)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jquery-ace-rails (1.0.1)
     jquery-fileupload-rails (0.4.6)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -598,6 +604,8 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   faker
+  ffi-hunspell
+  font-awesome-rails
   gon
   grape-entity
   grape-entity-matchers
@@ -608,7 +616,9 @@ DEPENDENCIES
   haml-rails
   hashie-forbidden_attributes
   httparty
+  hunspell
   jbuilder (~> 2.0)
+  jquery-ace-rails
   jquery-fileupload-rails
   jquery-rails
   jquery-validation-rails

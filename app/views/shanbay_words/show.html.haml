@@ -1,5 +1,5 @@
 
-= form_for :shanbay_words, url:shanbay_search_path,class:"form-horizontal" do |f|
+= form_for :shanbay_words, url:shanbay_search_path,class:"form-horizontal", method: :get do |f|
   .row
     .col-xs-8.col-sm-7.col-md-6
       .field
@@ -16,11 +16,34 @@
     .col-xs-1.col-sm-2.col-md-3
       %em.pron= raw ("["+@shanbay.pronunciation+"]")
     .col-xs-1.col-sm-2.col-md-3
-      = link_to "uk", @shanbay.uk_audio
-      = link_to "us", @shanbay.us_audio
+      -#= audio_tag @shanbay.uk_audio, id: "uk"
+      = audio_tag @shanbay.us_audio, id: "us"
+      
+      -#.btn#uk_play
+        = fa_icon "play", text: "uk"
+      .btn#us_play
+        = fa_icon "play", text: "us"
   <br/>
-  %p= raw @shanbay.definition.gsub( /\n/ , "<br/>")
-  %p= @shanbay.en_definition[:defn]
+  - if @collins.present?
+    -#- temp_frequency = @collins.first.try(:frequency) || 0
+    - temp_frequency = @word.frequency
+    %p{class: "collins_frequency_#{temp_frequency}"}= "★"* temp_frequency#, class: "collins_frequency_#{temp_frequency}"
+  -#%p= @suggests.to_s
+  .well
+    %p= raw @shanbay.definition.gsub( /\n/ , "<br/>")
+    %p= @shanbay.en_definition[:defn]
+  .well
+    - if @thesaurus.present?
+      %b thesaurus
+      - @thesaurus.each do |noun, list_list|
+        %p= noun
+        - list_list.each_with_index do |list, index|
+          %b= index + 1
+          - list.each do |th|
+            = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)}", "data-rel"=>"tooltip", "data-original-title"=>$shanbay[th], title: $shanbay[th]
+          %br
+        %br
+      
   -#%p= @shanbay.cn_definition
   
   -#%p= @shanbay.num_sense
@@ -28,3 +51,18 @@
   -#%p= @shanbay.pron
   -#%p= @shanbay.audio
   -#%p= @shanbay.word_id
+- else
+  - if @suggests.present?
+    %p 您是不是要查找:
+    - @suggests.each do |suggest|
+      = link_to suggest, "/shanbay_search/?" + {word: suggest}.to_param, word: suggest, method: :get
+    -#%a= suggest
+
+:javascript
+  $('#uk_play').on('click', function() {
+    $('#uk').get(0).play();
+  });
+
+  $('#us_play').on('click', function() {
+    $('#us').get(0).play();
+  });

@@ -4,7 +4,7 @@ class Shanbay
   include Mongoid::Attributes::Dynamic
   # include Mongoid::Sphinx
 
-  belongs_to :word
+  belongs_to :word, index: true
   #
   # search_index(:fields => [:content,
   #                          :en_definitions,
