@@ -1,6 +1,6 @@
 module ShanbayWordsHelper
   def word_frequency(word)
-    return $frequency[word]
+    return $frequency[word] || 0 #rand(0..5)
     begin
       cs = Collin.find_by content: word
     rescue

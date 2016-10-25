@@ -40,7 +40,10 @@
         - list_list.each_with_index do |list, index|
           %b= index + 1
           - list.each do |th|
-            = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)}", "data-rel"=>"tooltip", "data-original-title"=>$shanbay[th], title: $shanbay[th]
+            - cn = $shanbay[th] || "我是单词" 
+            = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)} my-tooltip-link tooltip-error", "data-rel"=>"tooltip", "data-original-title"=>cn, title: cn
+            %space 
+            -#&nbsp;
           %br
         %br
       
@@ -59,10 +62,15 @@
     -#%a= suggest
 
 :javascript
-  $('#uk_play').on('click', function() {
-    $('#uk').get(0).play();
+  $(function(){
+    $('#uk_play').on('click', function() {
+      $('#uk').get(0).play();
+    });
+
+    $('#us_play').on('click', function() {
+      $('#us').get(0).play();
+    });
+
+    $('.my-tooltip-link').tooltip();
   });
 
-  $('#us_play').on('click', function() {
-    $('#us').get(0).play();
-  });

@@ -10,7 +10,7 @@ FFI::Hunspell.dict do |dict|
     ap dict.suggest("arbitrage")
 end
 =end
-$sp = Hunspell.new("/Users/jiyuhang/MyJianGuoYun/en_US.aff","/Users/jiyuhang/MyJianGuoYun/en_US.dic")
+#$sp = Hunspell.new("/Users/jiyuhang/MyJianGuoYun/en_US.aff","/Users/jiyuhang/MyJianGuoYun/en_US.dic")
 #ap $sp
 #ap $sp.spellcheck "dirt"
 #ap $sp.spellcheck "a"
