@@ -42,7 +42,7 @@ class ShanbayWordsController < ApplicationController
 
       else
         @shanbay = nil
-        @suggests = $sp.suggest param_word
+        @suggests = $spell.suggest param_word
       end
     end
     if @shanbay.present?
@@ -95,7 +95,7 @@ class ShanbayWordsController < ApplicationController
         
       else
         @shanbay = nil
-        @suggests = $sp.suggest param_word
+        @suggests = $spell.suggest param_word
       end
     end
 
