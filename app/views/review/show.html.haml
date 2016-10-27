@@ -1,0 +1,11 @@
+
+-#%a.btn.btn-block.btn-warning 下一个
+-#= link_to '下一个','review/next', class: "btn btn-block btn-warning"
+= render template: 'shanbay_words/show'
+.row.center
+  .col-xs-2
+    = link_to '认识','review/know', class: "btn btn-xlg btn-success"
+  .col-xs-2
+    = link_to '模糊','review/pending', class: "btn btn-xlg btn-warning"
+  .col-xs-2
+    = link_to '不认识','review/unknow', class: "btn btn-xlg btn-danger"

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'review' => 'review#show'
+
+  get 'review/next'
+  get 'review/know'
+  get 'review/unknow'
+  get 'review/pending'
+
   resources :todos, only: [:new,:show,:edit, :create, :index] do
     resource :completion, only: [:create, :destroy]
   end

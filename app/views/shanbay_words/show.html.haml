@@ -1,13 +1,14 @@
 
-= form_for :shanbay_words, url:shanbay_search_path,class:"form-horizontal", method: :get do |f|
-  .row
-    .col-xs-8.col-sm-7.col-md-6
-      .field
-        = f.text_field :word, class:"form-control", placeholder:"search"
+- if @show_search.present?
+  = form_for :shanbay_words, url:shanbay_search_path,class:"form-horizontal", method: :get do |f|
+    .row
+      .col-xs-8.col-sm-7.col-md-6
+        .field
+          = f.text_field :word, class:"form-control", placeholder:"search"
 
-    .col-xs-1.col-sm-2.col-md-3
-      .actions
-        = f.submit '查找', class:"btn btn-primary btn-default"
+      .col-xs-1.col-sm-2.col-md-3
+        .actions
+          = f.submit '查找', class:"btn btn-primary btn-default"
 
 - unless @shanbay.nil?
   .row

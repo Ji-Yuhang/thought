@@ -5,6 +5,7 @@ class ShanbayWordsController < ApplicationController
   end
 
   def show
+    @show_search = true
     unless params[:shanbay_words].nil?
       param_word = params[:shanbay_words][:word]
     else
