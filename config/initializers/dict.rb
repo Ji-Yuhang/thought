@@ -6,7 +6,6 @@ $shanbay = Hash.new
 Word.each do |w|
   $frequency[w.word] = w.frequency
 end
-Word.where(:frequency.gt => 1).each do |w|
-  #$frequency[w.word] = w.frequency
-  $shanbay[w.word] = w.shanbay.definition.gsub( /\n/ , "<br/>")
-end
+#Word.where(:frequency.gt => 1).each do |w|
+  #$shanbay[w.word] = w.shanbay.definition.gsub( /\n/ , "<br/>")
+#end
