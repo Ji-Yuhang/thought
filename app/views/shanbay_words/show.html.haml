@@ -31,15 +31,18 @@
   -#%p= @suggests.to_s
   .well
     %p= raw @shanbay.definition.gsub( /\n/ , "<br/>")
-    %p= @shanbay.en_definition[:defn]
+    -#%p @shanbay.en_definition[:defn]
+    %p= raw( links_sentence(@shanbay.en_definition[:defn]))
   .well
     - if @collins.present?
       - @collins.each do |collin|
         %b= collin.cn
         %space
         %space
-        %i= collin.sentence
-        %br
+        -#%i= collin.sentence
+        - if collin.sentence.present?
+          %p= raw(links_sentence(collin.sentence))
+        -#%br
   .well
     - if @thesaurus.present?
       %b thesaurus
@@ -48,7 +51,7 @@
         - list_list.each_with_index do |list, index|
           %b= index + 1
           - list.each do |th|
-            - cn = word_cn(th) || "我是单词" 
+            - cn = word_cn(th) || "未知单词" 
             = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)} my-tooltip-link tooltip-error", "data-rel"=>"tooltip", "data-original-title"=>cn, title: cn
             %space 
             -#&nbsp;

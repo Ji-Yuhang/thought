@@ -28,4 +28,16 @@ class Word
     end
   end
 
+  def self.stem_word word
+    if $spell.check? word
+      stems = $spell.stem word
+      stems.delete word if stems.size > 1
+      guess = stems.max do | a, b |
+        b.length <=> a.length
+      end
+      return guess
+    end
+
+  end
+
 end

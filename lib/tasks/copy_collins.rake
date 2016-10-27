@@ -19,7 +19,8 @@ task :copy_collins => :environment do
     explain = row[9]
     usagenote = row[10]
     example = row[11]
-    if true
+    temp_cs = Collin.where(content: word)
+    if temp_cs.count == 0
       collin = Collin.new
       ww = Word.where(word: word)
       oneWord = ww.first
@@ -51,6 +52,8 @@ task :copy_collins => :environment do
       collin.example = exampleHash
 
       oneWord.collins << collin
+      collin.save
+      oneWord.save
     end
     index += 1
     ap "#{index}    /    #{total}     #{w}"

@@ -5,7 +5,7 @@ task :set_frequency => :environment do
   index = 0
 
   Word.each do |word|
-    next if word.frequency.present?
+    next if word.frequency.present? && word.frequency == 0 
     word.frequency = word.word_frequency
     word.save
     print "."

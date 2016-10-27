@@ -26,9 +26,7 @@ class ShanbayWordsController < ApplicationController
 
     else
       if $spell.check? param_word
-        stems = $spell.stem param_word
-        stems.delete param_word
-        param_word = stems.first
+        param_word = Word.stem_word param_word
 
         words = Word.where :word => param_word
         if words.present?
