@@ -31,7 +31,7 @@
     %p{class: "collins_frequency_#{temp_frequency}"}= "★"* temp_frequency#, class: "collins_frequency_#{temp_frequency}"
   -#%p= @suggests.to_s
   .well
-    %p= raw @shanbay.definition.gsub( /\n/ , "<br/>")
+    %b= raw @shanbay.definition.gsub( /\n/ , "<br/>")
     -#%p @shanbay.en_definition[:defn]
     %p= raw( links_sentence(@shanbay.en_definition[:defn]))
   .well

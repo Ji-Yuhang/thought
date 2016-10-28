@@ -40,10 +40,10 @@ module ShanbayWordsHelper
       ri = s.index /\W/,li
       break if ri.blank?
       word = s[li..ri-1]
-      puts "[#{li},#{ri}]   #{word}"
+      #puts "[#{li},#{ri}]   #{word}"
 
       lo = s[index..li-1]
-      puts lo
+      #puts lo
       s1 += lo if li != 0 
       if $frequency[word].present?
         origin_word = word
