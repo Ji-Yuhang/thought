@@ -1,0 +1,13 @@
+dl.dl-horizontal
+  - @wills.each do | word |
+    dt= word
+    dd= word_cn(word)
+
+button#refresh.btn-block.btn.btn-primary 刷新
+
+javascript:
+  $(function(){
+    $('#refresh').click(function(){
+      window.location.reload();
+    });
+  });

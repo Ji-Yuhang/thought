@@ -2,16 +2,33 @@
 <html>
 <head>
   <title>Thought</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 
-
 </head>
 <body>
 
+<%= render 'layouts/header' %>
+<div class="container center-block">
+  <!--<a class="twitter-timeline"  href="https://twitter.com/Ji_Yuhang" data-widget-id="727007335231549444">@Ji_Yuhang的推文</a>-->
+  <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, class: "alert alert-#{ name.to_s == "error" ? "danger" : "success" } alert-dismissable", role: "alert" do %>
+      <button class="close" type="button" data-dismiss="alert"/>
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+      <%= msg %>
+    <% end %> 
+  <% end %> 
+  <%= yield %>
+</div>
+
+<%= render 'layouts/footer' %>
 <script type="text/javascript">
+  document.onready=function(){
   function selectText(){
     if(document.selection){
       return document.selection.createRange().text;// IE
@@ -31,14 +48,9 @@
     }
 //    window.location = "/shanbay/?word="+str;
   }
+  };
 </script>
-<%= render 'layouts/header' %>
-<div class="container center-block">
-  <!--<a class="twitter-timeline"  href="https://twitter.com/Ji_Yuhang" data-widget-id="727007335231549444">@Ji_Yuhang的推文</a>-->
-  <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
-  <%= yield %>
-</div>
 
-<%= render 'layouts/footer' %>
 </body>
+
 </html>

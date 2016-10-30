@@ -12,9 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= bootstrap
  *= font-awesome
  */
-@import "bootstrap";
+/*@import "bootstrap";*/
 /*@import "font-awesome";*/
 
 html.turbolinks-progress-bar::before {

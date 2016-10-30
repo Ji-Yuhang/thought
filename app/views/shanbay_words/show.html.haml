@@ -53,7 +53,7 @@
           %b= index + 1
           - list.each do |th|
             - cn = word_cn(th) || "未知单词" 
-            = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)} my-tooltip-link tooltip-error", "data-rel"=>"tooltip", "data-original-title"=>cn, title: cn
+            = link_to th, "/shanbay_search/?" + {word: th}.to_param, word: th, method: :get, class: "collins_frequency_#{word_frequency(th)} my-tooltip-link tooltip-info", "data-rel"=>"tooltip", "data-original-title"=>cn, title: cn
             %space 
             -#&nbsp;
           %br
@@ -84,5 +84,12 @@
     });
 
     $('.my-tooltip-link').tooltip();
+    /*
+    $('.my-tooltip-link').tooltip({
+      placement:"top",
+      html:true,
+      template: '<div class="tooltip tooltip-info"><div class="tooltip-arrow"></div><div style="background:#337ab7"><div class="tooltip-inner"></div></div></div>'
+    });*/
+
   });
 

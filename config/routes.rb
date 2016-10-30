@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'review' => 'review#show'
+  get 'review/words' => 'review#words'
 
   get 'review/next'
   get 'review/know'

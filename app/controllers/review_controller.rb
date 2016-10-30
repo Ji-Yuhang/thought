@@ -57,4 +57,9 @@ class ReviewController < ApplicationController
     #TODO: inerval 2
     redirect_to action: "show"
   end
+
+  def words
+    i = rand(1000)
+    @wills = $collin1[i..i+10]
+  end
 end

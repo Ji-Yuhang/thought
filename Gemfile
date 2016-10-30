@@ -139,6 +139,8 @@ gem 'hunspell'
 gem 'ffi-hunspell'
 gem "font-awesome-rails"
 gem 'jquery-ace-rails'
+gem 'epub-parser'
+gem 'slim-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

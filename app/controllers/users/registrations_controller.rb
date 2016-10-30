@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    debugger
     super
   end
 
@@ -60,7 +59,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def resource_params
-    debugger
     # params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
   private :resource_params
