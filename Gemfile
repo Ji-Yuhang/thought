@@ -141,6 +141,10 @@ gem "font-awesome-rails"
 gem 'jquery-ace-rails'
 gem 'epub-parser'
 gem 'slim-rails'
+gem 'message_bus'
+gem 'puma'
+#gem "passenger", "<= 5.0.21"#, require: "phusion_passenger/rack_handler"
+#gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

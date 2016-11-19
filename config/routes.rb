@@ -95,4 +95,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  mount ThoughtV1API => '/api/v1'
+  
 end

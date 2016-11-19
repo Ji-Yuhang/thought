@@ -24,5 +24,20 @@ module Thought
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
+    config.paths.add File.join('app', 'apis'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'apis', '*')]
+    
+    # Rails: config/application.rb or config.ru
+    if defined?(PhusionPassenger)
+      PhusionPassenger.advertised_concurrency_level = 0
+      PhusionPassenger.on_event(:starting_worker_process) do |forked|
+        if forked
+          # We're in smart spawning mode.
+          MessageBus.after_fork
+        else
+          # We're in conservative spawning mode. We don't need to do anything.
+        end
+      end
+    end
   end
 end

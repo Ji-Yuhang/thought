@@ -29,6 +29,47 @@
 <%= render 'layouts/footer' %>
 <script type="text/javascript">
   document.onready=function(){
+
+    MessageBus.start();
+    MessageBus.callbackInterval = 100;
+    MessageBus.alwaysLongPoll = true;
+    MessageBus.subscribe("/channel/supermemo", function(data){
+      //console.log(data);
+      //console.log("receive", data);
+      if(data != null){
+        if(data.type == "supermemo"){
+          console.log("receive", data);
+          window.location.href='/shanbay_search?word='+data.word
+        
+        }else if(data.type == "settle"){
+          $.gritter.add({
+            title: data.title,
+            text: data.title,
+            class_name: 'gritter-success gritter-light'
+          });
+          $("#jplayererror").jPlayer('stop');
+          $("#jplayer").jPlayer('play');
+        }else if(data.type == "settle_error"){
+          $.gritter.add({
+            title: data.title,
+            text: data.title,
+            class_name: 'gritter-error'
+          });
+
+          //$.gritter.add({
+          //title: '您有一条新的订单!',
+          // text: '订单号码：<a href="#/orders/' + data.order_id + '?tab=all">' + data.orderno + '</a>',
+          //class_name: 'gritter-success gritter-light'
+          //});
+
+          $("#jplayer").jPlayer('stop');
+          $("#jplayererror").jPlayer('play');
+        }
+      }else{
+        //$("#jplayer").jPlayer('stop');
+        //$("#jplayererror").jPlayer('stop');
+        //getOrderCount();
+      }});
   function selectText(){
     if(document.selection){
       return document.selection.createRange().text;// IE
